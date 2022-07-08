@@ -17,28 +17,26 @@ class FlexChild extends AbstractField implements HasFields {
    */
   private $sub_fields = [];
 
-
   function &getFields() {
-    return $this -> sub_fields;
+    return $this->sub_fields;
   }
 
-  public function dump( $parent_key ) {
+  public function dump($parent_key) {
     $subs = [];
-    foreach ( $this -> sub_fields as $sub ) {
-      $subs[] = $sub -> dump( $parent_key . "_" . $this -> name );
+    foreach ($this->sub_fields as $sub) {
+      $subs[] = $sub->dump($parent_key . "_" . $this->name);
     }
 
-    $arr1 = parent ::dump( $parent_key );
+    $arr1 = parent::dump($parent_key);
     $arr2 = [
-      "min"        => $this -> min,
-      "max"        => $this -> max,
-      "display"    => $this -> display,
-      "sub_fields" => $subs
+      "min" => $this->min,
+      "max" => $this->max,
+      "display" => $this->display,
+      "sub_fields" => $subs,
     ];
 
-    return array_merge( $arr1, $arr2 );
+    return array_merge($arr1, $arr2);
   }
-
 
   /**
    * @param $name
@@ -46,9 +44,9 @@ class FlexChild extends AbstractField implements HasFields {
    *
    * @return FlexChild
    */
-  public function duplicate( $name, $label ) {
-    $f = new FlexChild( $name, $label );
-    $this -> paste_data( $f );
+  public function duplicate($name, $label) {
+    $f = new FlexChild($name, $label);
+    $this->paste_data($f);
 
     return $f;
   }
@@ -56,12 +54,12 @@ class FlexChild extends AbstractField implements HasFields {
   /**
    * @param FlexChild $target
    */
-  protected function paste_data( $target ) {
-    parent ::paste_data( $target );
-    $target -> min        = $this -> min;
-    $target -> max        = $this -> max;
-    $target -> display    = $this -> display;
-    $target -> sub_fields = $this -> sub_fields;
+  protected function paste_data($target) {
+    parent::paste_data($target);
+    $target->min = $this->min;
+    $target->max = $this->max;
+    $target->display = $this->display;
+    $target->sub_fields = $this->sub_fields;
     //TODO: implement deep copy
   }
 }

@@ -14,28 +14,26 @@ class FlexField extends AbstractField implements HasFields {
   private $layouts = [];
 
   function &getFields() {
-    return $this -> layouts;
+    return $this->layouts;
   }
 
-  public function dump( $parent_key ) {
+  public function dump($parent_key) {
     $subs = [];
-    foreach ( $this -> layouts as $sub ) {
-      $dumped                 = $sub -> dump( $parent_key . "_" . $this -> name );
-      $subs[ $dumped["key"] ] = $dumped;
+    foreach ($this->layouts as $sub) {
+      $dumped = $sub->dump($parent_key . "_" . $this->name);
+      $subs[$dumped["key"]] = $dumped;
     }
 
-    $arr1 = parent ::dump( $parent_key );
+    $arr1 = parent::dump($parent_key);
     $arr2 = [
-      "min"          => $this -> min,
-      "max"          => $this -> max,
-      "button_label" => $this -> button_label,
-      "layouts"      => $subs
+      "min" => $this->min,
+      "max" => $this->max,
+      "button_label" => $this->button_label,
+      "layouts" => $subs,
     ];
 
-    return array_merge( $arr1, $arr2 );
-
+    return array_merge($arr1, $arr2);
   }
-
 
   /**
    * @param $name
@@ -43,9 +41,9 @@ class FlexField extends AbstractField implements HasFields {
    *
    * @return FlexField
    */
-  public function duplicate( $name, $label ) {
-    $f = new FlexField( $name, $label );
-    $this -> paste_data( $f );
+  public function duplicate($name, $label) {
+    $f = new FlexField($name, $label);
+    $this->paste_data($f);
 
     return $f;
   }
@@ -53,12 +51,12 @@ class FlexField extends AbstractField implements HasFields {
   /**
    * @param FlexField $target
    */
-  protected function paste_data( $target ) {
-    parent ::paste_data( $target );
-    $target -> min          = $this -> min;
-    $target -> max          = $this -> max;
-    $target -> button_label = $this -> button_label;
-    $target -> layouts      = $this -> layouts;
+  protected function paste_data($target) {
+    parent::paste_data($target);
+    $target->min = $this->min;
+    $target->max = $this->max;
+    $target->button_label = $this->button_label;
+    $target->layouts = $this->layouts;
     //TODO: implement deep copy
   }
 }

@@ -12,15 +12,15 @@ class MessageField extends AbstractField {
   public $message = "";
   public $esc_html = false;
 
-  public function dump( $parent_key ) {
-    $arr1 = parent ::dump( $parent_key );
+  public function dump($parent_key) {
+    $arr1 = parent::dump($parent_key);
     $arr2 = [
-      "new_lines" => $this -> new_lines,
-      "message"   => $this -> message,
-      "esc_html"  => $this -> esc_html,
+      "new_lines" => $this->new_lines,
+      "message" => $this->message,
+      "esc_html" => $this->esc_html,
     ];
 
-    return array_merge( $arr1, $arr2 );
+    return array_merge($arr1, $arr2);
   }
 
   /**
@@ -29,9 +29,9 @@ class MessageField extends AbstractField {
    *
    * @return AbstractField
    */
-  public function duplicate( $name, $label ) {
-    $f = new MessageField( $name, $label );
-    $this -> paste_data( $f );
+  public function duplicate($name, $label) {
+    $f = new MessageField($name, $label);
+    $this->paste_data($f);
 
     return $f;
   }
@@ -39,14 +39,11 @@ class MessageField extends AbstractField {
   /**
    * @param MessageField $target
    */
-  protected function paste_data( $target ) {
-    parent ::paste_data( $target );
+  protected function paste_data($target) {
+    parent::paste_data($target);
 
-    $target -> new_lines = $this -> new_lines;
-    $target -> message   = $this -> message;
-    $target -> esc_html  = $this -> esc_html;
+    $target->new_lines = $this->new_lines;
+    $target->message = $this->message;
+    $target->esc_html = $this->esc_html;
   }
-
 }
-
-

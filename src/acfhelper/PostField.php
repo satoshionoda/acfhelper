@@ -14,20 +14,19 @@ class PostField extends AbstractField {
   public $return_format = "object";
   public $ui = true;
 
-  public function dump( $parent_key ) {
-    $arr1 = parent ::dump( $parent_key );
+  public function dump($parent_key) {
+    $arr1 = parent::dump($parent_key);
     $arr2 = [
-      "post_type"     => $this -> post_type,
-      "taxonomy"      => $this -> taxonomy,
-      "allow_null"    => $this -> allow_null,
-      "multiple"      => $this -> multiple,
-      "return_format" => $this -> return_format,
-      "ui"            => $this -> ui,
+      "post_type" => $this->post_type,
+      "taxonomy" => $this->taxonomy,
+      "allow_null" => $this->allow_null,
+      "multiple" => $this->multiple,
+      "return_format" => $this->return_format,
+      "ui" => $this->ui,
     ];
 
-    return array_merge( $arr1, $arr2 );
+    return array_merge($arr1, $arr2);
   }
-
 
   /**
    * @param $name
@@ -36,9 +35,9 @@ class PostField extends AbstractField {
    * @return PostField
    */
 
-  public function duplicate( $name, $label ) {
-    $f = new PostField( $name, $label );
-    $this -> paste_data( $f );
+  public function duplicate($name, $label) {
+    $f = new PostField($name, $label);
+    $this->paste_data($f);
 
     return $f;
   }
@@ -46,13 +45,13 @@ class PostField extends AbstractField {
   /**
    * @param PostField $target
    */
-  protected function paste_data( $target ) {
-    parent ::paste_data( $target );
-    $target -> post_type     = $this -> post_type;
-    $target -> taxonomy      = $this -> taxonomy;
-    $target -> allow_null    = $this -> allow_null;
-    $target -> multiple      = $this -> multiple;
-    $target -> return_format = $this -> return_format;
-    $target -> ui            = $this -> ui;
+  protected function paste_data($target) {
+    parent::paste_data($target);
+    $target->post_type = $this->post_type;
+    $target->taxonomy = $this->taxonomy;
+    $target->allow_null = $this->allow_null;
+    $target->multiple = $this->multiple;
+    $target->return_format = $this->return_format;
+    $target->ui = $this->ui;
   }
 }

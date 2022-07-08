@@ -1,6 +1,7 @@
 <?php
+
 namespace ACFHelper;
-interface HasFields{
+interface HasFields {
   /**
    *
    * @return AbstractField[]

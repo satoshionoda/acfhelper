@@ -1,0 +1,16 @@
+#general files
+_notes/
+*.mp4
+.DS_Store
+*.iml
+*.map
+
+.idea/
+.vscode/
+.prepros
+
+npm-debug.log
+
+node_modules/
+public_static/
+public_wp/

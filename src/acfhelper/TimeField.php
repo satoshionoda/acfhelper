@@ -7,14 +7,14 @@ class TimeField extends AbstractField {
   public $display_format = "g:i a";
   public $return_format = "g:i a";
 
-  public function dump( $parent_key ) {
-    $arr1 = parent ::dump( $parent_key );
+  public function dump($parent_key) {
+    $arr1 = parent::dump($parent_key);
     $arr2 = [
-      "display_format" => $this -> display_format,
-      "return_format"  => $this -> return_format,
+      "display_format" => $this->display_format,
+      "return_format" => $this->return_format,
     ];
 
-    return array_merge( $arr1, $arr2 );
+    return array_merge($arr1, $arr2);
   }
 
   /**
@@ -23,9 +23,9 @@ class TimeField extends AbstractField {
    *
    * @return TimeField
    */
-  public function duplicate( $name, $label ) {
-    $f = new TimeField( $name, $label );
-    $this -> paste_data( $f );
+  public function duplicate($name, $label) {
+    $f = new TimeField($name, $label);
+    $this->paste_data($f);
 
     return $f;
   }
@@ -33,10 +33,10 @@ class TimeField extends AbstractField {
   /**
    * @param TimeField $target
    */
-  protected function paste_data( $target ) {
-    parent ::paste_data( $target );
+  protected function paste_data($target) {
+    parent::paste_data($target);
 
-    $target -> display_format = $this -> display_format;
-    $target -> return_format  = $this -> return_format;
+    $target->display_format = $this->display_format;
+    $target->return_format = $this->return_format;
   }
 }

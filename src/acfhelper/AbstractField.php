@@ -42,49 +42,48 @@ abstract class AbstractField {
    */
   public $default_value;
 
-  public function __construct( $name, $label ) {
-    $this -> name  = $name;
-    $this -> label = $label;
+  public function __construct($name, $label) {
+    $this->name = $name;
+    $this->label = $label;
   }
 
   /**
    * @param $fields HasFields
    */
-  public function insert_to($fields){
-    $fields ->getFields()[] = $this;
+  public function insert_to($fields) {
+    $fields->getFields()[] = $this;
   }
 
-  public function dump( $parent_key ) {
-
+  public function dump($parent_key) {
     return [
-      "key"               => $parent_key . "_" . $this -> name,
-      "label"             => $this -> label,
-      "name"              => $this -> name,
-      "type"              => $this -> type,
-      "instructions"      => $this -> instructions,
-      "required"          => $this -> required,
-      "conditional_logic" => $this -> conditional_logic,
-      "wrapper"           => [
-        "width" => $this -> wrapper_width,
-        "class" => $this -> wrapper_class,
-        "id"    => $this -> wrapper_id,
+      "key" => $parent_key . "_" . $this->name,
+      "label" => $this->label,
+      "name" => $this->name,
+      "type" => $this->type,
+      "instructions" => $this->instructions,
+      "required" => $this->required,
+      "conditional_logic" => $this->conditional_logic,
+      "wrapper" => [
+        "width" => $this->wrapper_width,
+        "class" => $this->wrapper_class,
+        "id" => $this->wrapper_id,
       ],
-      "default_value"     => $this -> default_value,
+      "default_value" => $this->default_value,
     ];
   }
 
   /**
    * @param $target AbstractField
    */
-  protected function paste_data( $target ) {
-    $target -> type              = $this -> type;
-    $target -> instructions      = $this -> instructions;
-    $target -> required          = $this -> required;
-    $target -> conditional_logic = $this -> conditional_logic;
-    $target -> wrapper_width     = $this -> wrapper_width;
-    $target -> wrapper_class     = $this -> wrapper_class;
-    $target -> wrapper_id        = $this -> wrapper_id;
-    $target -> default_value     = $this -> default_value;
+  protected function paste_data($target) {
+    $target->type = $this->type;
+    $target->instructions = $this->instructions;
+    $target->required = $this->required;
+    $target->conditional_logic = $this->conditional_logic;
+    $target->wrapper_width = $this->wrapper_width;
+    $target->wrapper_class = $this->wrapper_class;
+    $target->wrapper_id = $this->wrapper_id;
+    $target->default_value = $this->default_value;
   }
 
   /**
@@ -93,5 +92,5 @@ abstract class AbstractField {
    *
    * @return AbstractField
    */
-  abstract public function duplicate( $name, $label );
+  abstract public function duplicate($name, $label);
 }

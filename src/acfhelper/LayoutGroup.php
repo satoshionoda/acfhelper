@@ -14,26 +14,24 @@ class LayoutGroup extends AbstractField implements HasFields {
    */
   private $sub_fields = [];
 
-
   function &getFields() {
     return $this->sub_fields;
   }
 
-  public function dump( $parent_key ) {
+  public function dump($parent_key) {
     $subs = [];
-    foreach ( $this -> sub_fields as $sub ) {
-      $subs[] = $sub -> dump( $parent_key . "_" . $this -> name );
+    foreach ($this->sub_fields as $sub) {
+      $subs[] = $sub->dump($parent_key . "_" . $this->name);
     }
 
-    $arr1 = parent ::dump( $parent_key );
+    $arr1 = parent::dump($parent_key);
     $arr2 = [
-      "layout"       => $this -> layout,
-      "sub_fields"   => $subs
+      "layout" => $this->layout,
+      "sub_fields" => $subs,
     ];
 
-    return array_merge( $arr1, $arr2 );
+    return array_merge($arr1, $arr2);
   }
-
 
   /**
    * @param $name
@@ -41,19 +39,20 @@ class LayoutGroup extends AbstractField implements HasFields {
    *
    * @return LayoutGroup
    */
-  public function duplicate( $name, $label ) {
-    $f = new LayoutGroup( $name, $label );
-    $this -> paste_data( $f );
+  public function duplicate($name, $label) {
+    $f = new LayoutGroup($name, $label);
+    $this->paste_data($f);
+
     return $f;
   }
 
   /**
    * @param LayoutGroup $target
    */
-  protected function paste_data( $target ) {
-    parent ::paste_data( $target );
-    $target -> layout       = $this -> layout;
-    $target -> sub_fields   = $this -> sub_fields;
+  protected function paste_data($target) {
+    parent::paste_data($target);
+    $target->layout = $this->layout;
+    $target->sub_fields = $this->sub_fields;
     //TODO: implement deep copy
   }
 }

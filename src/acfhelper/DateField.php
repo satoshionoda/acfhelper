@@ -8,15 +8,15 @@ class DateField extends AbstractField {
   public $return_format = "Y-m-d";
   public $first_day = 1;
 
-  public function dump( $parent_key ) {
-    $arr1 = parent ::dump( $parent_key );
+  public function dump($parent_key) {
+    $arr1 = parent::dump($parent_key);
     $arr2 = [
-      "display_format" => $this -> display_format,
-      "return_format"  => $this -> return_format,
-      "first_day"      => $this -> first_day,
+      "display_format" => $this->display_format,
+      "return_format" => $this->return_format,
+      "first_day" => $this->first_day,
     ];
 
-    return array_merge( $arr1, $arr2 );
+    return array_merge($arr1, $arr2);
   }
 
   /**
@@ -25,9 +25,9 @@ class DateField extends AbstractField {
    *
    * @return DateField
    */
-  public function duplicate( $name, $label ) {
-    $f = new DateField( $name, $label );
-    $this -> paste_data( $f );
+  public function duplicate($name, $label) {
+    $f = new DateField($name, $label);
+    $this->paste_data($f);
 
     return $f;
   }
@@ -35,11 +35,11 @@ class DateField extends AbstractField {
   /**
    * @param DateField $target
    */
-  protected function paste_data( $target ) {
-    parent ::paste_data( $target );
+  protected function paste_data($target) {
+    parent::paste_data($target);
 
-    $target -> display_format = $this -> display_format;
-    $target -> return_format  = $this -> return_format;
-    $target -> first_day      = $this -> first_day;
+    $target->display_format = $this->display_format;
+    $target->return_format = $this->return_format;
+    $target->first_day = $this->first_day;
   }
 }

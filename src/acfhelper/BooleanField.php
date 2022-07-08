@@ -16,17 +16,16 @@ class BooleanField extends AbstractField {
    */
   public $ui_off_text = "非表示";
 
-  public function dump( $parent_key ) {
-    $arr1 = parent ::dump( $parent_key );
+  public function dump($parent_key) {
+    $arr1 = parent::dump($parent_key);
     $arr2 = [
-      "ui"          => $this -> ui,
-      "ui_on_text"  => $this -> ui_on_text,
-      "ui_off_text" => $this -> ui_off_text,
+      "ui" => $this->ui,
+      "ui_on_text" => $this->ui_on_text,
+      "ui_off_text" => $this->ui_off_text,
     ];
 
-    return array_merge( $arr1, $arr2 );
+    return array_merge($arr1, $arr2);
   }
-
 
   /**
    * @param $name
@@ -35,19 +34,20 @@ class BooleanField extends AbstractField {
    * @return BooleanField
    */
 
-  public function duplicate( $name, $label ) {
-    $f = new BooleanField( $name, $label );
-    $this -> paste_data( $f );
+  public function duplicate($name, $label) {
+    $f = new BooleanField($name, $label);
+    $this->paste_data($f);
+
     return $f;
   }
 
   /**
    * @param BooleanField $target
    */
-  protected function paste_data( $target ) {
-    parent ::paste_data( $target );
-    $target -> ui          = $this -> ui;
-    $target -> ui_on_text  = $this -> ui_on_text;
-    $target -> ui_off_text = $this -> ui_off_text;
+  protected function paste_data($target) {
+    parent::paste_data($target);
+    $target->ui = $this->ui;
+    $target->ui_on_text = $this->ui_on_text;
+    $target->ui_off_text = $this->ui_off_text;
   }
 }

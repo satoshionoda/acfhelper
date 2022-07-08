@@ -11,18 +11,18 @@ class TextField extends AbstractField {
   public $readonly = false;
   public $disabled = 0;
 
-  public function dump( $parent_key ) {
-    $arr1 = parent ::dump( $parent_key );
+  public function dump($parent_key) {
+    $arr1 = parent::dump($parent_key);
     $arr2 = [
-      "placeholder" => $this -> placeholder,
-      "prepend"     => $this -> prepend,
-      "append"      => $this -> append,
-      "maxlength"   => $this -> maxlength,
-      "readonly"    => $this -> readonly,
-      "disabled"    => $this -> disabled,
+      "placeholder" => $this->placeholder,
+      "prepend" => $this->prepend,
+      "append" => $this->append,
+      "maxlength" => $this->maxlength,
+      "readonly" => $this->readonly,
+      "disabled" => $this->disabled,
     ];
 
-    return array_merge( $arr1, $arr2 );
+    return array_merge($arr1, $arr2);
   }
 
   /**
@@ -31,9 +31,9 @@ class TextField extends AbstractField {
    *
    * @return AbstractField
    */
-  public function duplicate( $name, $label ) {
-    $f = new TextField( $name, $label );
-    $this -> paste_data( $f );
+  public function duplicate($name, $label) {
+    $f = new TextField($name, $label);
+    $this->paste_data($f);
 
     return $f;
   }
@@ -41,14 +41,14 @@ class TextField extends AbstractField {
   /**
    * @param TextField $target
    */
-  protected function paste_data( $target ) {
-    parent ::paste_data( $target );
+  protected function paste_data($target) {
+    parent::paste_data($target);
 
-    $target -> placeholder = $this -> placeholder;
-    $target -> prepend     = $this -> prepend;
-    $target -> append      = $this -> append;
-    $target -> maxlength   = $this -> maxlength;
-    $target -> readonly    = $this -> readonly;
-    $target -> disabled    = $this -> disabled;
+    $target->placeholder = $this->placeholder;
+    $target->prepend = $this->prepend;
+    $target->append = $this->append;
+    $target->maxlength = $this->maxlength;
+    $target->readonly = $this->readonly;
+    $target->disabled = $this->disabled;
   }
 }

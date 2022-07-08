@@ -15,18 +15,18 @@ class TextAreaField extends AbstractField {
   public $readonly = false;
   public $disabled = 0;
 
-  public function dump( $parent_key ) {
-    $arr1 = parent ::dump( $parent_key );
+  public function dump($parent_key) {
+    $arr1 = parent::dump($parent_key);
     $arr2 = [
-      "placeholder" => $this -> placeholder,
-      "maxlength"   => $this -> maxlength,
-      "rows"        => $this -> rows,
-      "new_lines"   => $this -> new_lines,
-      "readonly"    => $this -> readonly,
-      "disabled"    => $this -> disabled,
+      "placeholder" => $this->placeholder,
+      "maxlength" => $this->maxlength,
+      "rows" => $this->rows,
+      "new_lines" => $this->new_lines,
+      "readonly" => $this->readonly,
+      "disabled" => $this->disabled,
     ];
 
-    return array_merge( $arr1, $arr2 );
+    return array_merge($arr1, $arr2);
   }
 
   /**
@@ -35,9 +35,9 @@ class TextAreaField extends AbstractField {
    *
    * @return AbstractField
    */
-  public function duplicate( $name, $label ) {
-    $f = new TextAreaField( $name, $label );
-    $this -> paste_data( $f );
+  public function duplicate($name, $label) {
+    $f = new TextAreaField($name, $label);
+    $this->paste_data($f);
 
     return $f;
   }
@@ -45,17 +45,14 @@ class TextAreaField extends AbstractField {
   /**
    * @param TextAreaField $target
    */
-  protected function paste_data( $target ) {
-    parent ::paste_data( $target );
+  protected function paste_data($target) {
+    parent::paste_data($target);
 
-    $target -> placeholder = $this -> placeholder;
-    $target -> maxlength   = $this -> maxlength;
-    $target -> rows        = $this -> rows;
-    $target -> new_lines   = $this -> new_lines;
-    $target -> readonly    = $this -> readonly;
-    $target -> disabled    = $this -> disabled;
+    $target->placeholder = $this->placeholder;
+    $target->maxlength = $this->maxlength;
+    $target->rows = $this->rows;
+    $target->new_lines = $this->new_lines;
+    $target->readonly = $this->readonly;
+    $target->disabled = $this->disabled;
   }
-
 }
-
-

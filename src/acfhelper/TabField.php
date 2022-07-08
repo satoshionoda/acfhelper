@@ -7,14 +7,14 @@ class TabField extends AbstractField {
   public $placement = "top";
   public $endpoint = false;
 
-  public function dump( $parent_key ) {
-    $arr1 = parent ::dump( $parent_key );
+  public function dump($parent_key) {
+    $arr1 = parent::dump($parent_key);
     $arr2 = [
-      "placement" => $this -> placement,
-      "endpoint"  => $this -> endpoint,
+      "placement" => $this->placement,
+      "endpoint" => $this->endpoint,
     ];
 
-    return array_merge( $arr1, $arr2 );
+    return array_merge($arr1, $arr2);
   }
 
   /**
@@ -23,9 +23,9 @@ class TabField extends AbstractField {
    *
    * @return AbstractField
    */
-  public function duplicate( $name, $label ) {
-    $f = new TabField( $name, $label );
-    $this -> paste_data( $f );
+  public function duplicate($name, $label) {
+    $f = new TabField($name, $label);
+    $this->paste_data($f);
 
     return $f;
   }
@@ -33,9 +33,9 @@ class TabField extends AbstractField {
   /**
    * @param TabField $target
    */
-  protected function paste_data( $target ) {
-    parent ::paste_data( $target );
-    $target -> placement = $this -> placement;
-    $target -> endpoint  = $this -> endpoint;
+  protected function paste_data($target) {
+    parent::paste_data($target);
+    $target->placement = $this->placement;
+    $target->endpoint = $this->endpoint;
   }
 }

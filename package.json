@@ -1,0 +1,20 @@
+{
+  "name": "diva-corporate",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "YOHAK LLC",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "serve-static": "MODE=development SERVER=browserSync CONFIG=desktop webpack",
+    "webpack-wp": "MODE=development CONFIG=wp webpack",
+    "watch-wp": "MODE=development CONFIG=wp webpack --watch",
+    "build-wp": "CONFIG=wp npx webpack",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.18.9",
+    "prettier": "^2.6.2"
+  }
+}
