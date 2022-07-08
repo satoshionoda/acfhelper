@@ -2,17 +2,17 @@
 
 namespace ACFHelper;
 class URLField extends AbstractField {
-  protected $type = "text";
+  protected $type = "url";
 
   public $placeholder = "";
 
-  public function dump( $parent_key ) {
-    $arr1 = parent ::dump( $parent_key );
+  public function dump($parent_key) {
+    $arr1 = parent::dump($parent_key);
     $arr2 = [
-      "placeholder" => $this -> placeholder,
+      "placeholder" => $this->placeholder,
     ];
 
-    return array_merge( $arr1, $arr2 );
+    return array_merge($arr1, $arr2);
   }
 
   /**
@@ -21,19 +21,19 @@ class URLField extends AbstractField {
    *
    * @return AbstractField
    */
-  public function duplicate( $name, $label ) {
-    $f = new TextField( $name, $label );
-    $this -> paste_data( $f );
+  public function duplicate($name, $label) {
+    $f = new URLField($name, $label);
+    $this->paste_data($f);
 
     return $f;
   }
 
   /**
-   * @param TextField $target
+   * @param URLField $target
    */
-  protected function paste_data( $target ) {
-    parent ::paste_data( $target );
+  protected function paste_data($target) {
+    parent::paste_data($target);
 
-    $target -> placeholder = $this -> placeholder;
+    $target->placeholder = $this->placeholder;
   }
 }

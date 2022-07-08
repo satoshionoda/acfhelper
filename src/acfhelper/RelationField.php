@@ -12,19 +12,23 @@ class RelationField extends AbstractField {
   public $max = "";
   public $return_object = "object";
 
-  public function dump( $parent_key ) {
-    $arr1 = parent ::dump( $parent_key );
+  const FILTER_SEARCH = "search";
+  const FILTER_POST_TYPE = "post_type";
+  const FILTER_TAXONOMY = "taxonomy";
+
+  public function dump($parent_key) {
+    $arr1 = parent::dump($parent_key);
     $arr2 = [
-      "post_type"     => $this -> post_type,
-      "taxonomy"      => $this -> taxonomy,
-      "filters"       => $this -> filters,
-      "elements"      => $this -> elements,
-      "min"           => $this -> min,
-      "max"           => $this -> max,
-      "return_object" => $this -> return_object,
+      "post_type" => $this->post_type,
+      "taxonomy" => $this->taxonomy,
+      "filters" => $this->filters,
+      "elements" => $this->elements,
+      "min" => $this->min,
+      "max" => $this->max,
+      "return_object" => $this->return_object,
     ];
 
-    return array_merge( $arr1, $arr2 );
+    return array_merge($arr1, $arr2);
   }
 
   /**
@@ -33,9 +37,9 @@ class RelationField extends AbstractField {
    *
    * @return RelationField
    */
-  public function duplicate( $name, $label ) {
-    $f = new RelationField( $name, $label );
-    $this -> paste_data( $f );
+  public function duplicate($name, $label) {
+    $f = new RelationField($name, $label);
+    $this->paste_data($f);
 
     return $f;
   }
@@ -43,15 +47,15 @@ class RelationField extends AbstractField {
   /**
    * @param RelationField $target
    */
-  protected function paste_data( $target ) {
-    parent ::paste_data( $target );
+  protected function paste_data($target) {
+    parent::paste_data($target);
 
-    $target -> post_type     = $this -> post_type;
-    $target -> taxonomy      = $this -> taxonomy;
-    $target -> filters       = $this -> filters;
-    $target -> elements      = $this -> elements;
-    $target -> min           = $this -> min;
-    $target -> max           = $this -> max;
-    $target -> return_object = $this -> return_object;
+    $target->post_type = $this->post_type;
+    $target->taxonomy = $this->taxonomy;
+    $target->filters = $this->filters;
+    $target->elements = $this->elements;
+    $target->min = $this->min;
+    $target->max = $this->max;
+    $target->return_object = $this->return_object;
   }
 }

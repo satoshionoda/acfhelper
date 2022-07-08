@@ -22,6 +22,3 @@ include "LayoutGroup.php";
 include "RadioField.php";
 include "SelectField.php";
 include "TaxonomyField.php";
-
-
-
